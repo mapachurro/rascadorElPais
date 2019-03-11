@@ -1,2 +1,3 @@
-./scratch.html
-./node_modules
+.gitignore
+/scratch.html
+/node_modules

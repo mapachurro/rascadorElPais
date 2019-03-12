@@ -5,14 +5,14 @@
 // Loads results onto the page
 function getResults() {
   // Empty any results currently on the page
-  $("#results").empty();
+  $("#resultados").empty();
   // Grab all of the current notes
-  $.getJSON("/all", function(data) {
+  $.getJSON("/allNotes", function(data) {
     // For each note...
     for (var i = 0; i < data.length; i++) {
-      // ...populate #results with a p-tag that includes the note's title and object id
-      $("#results").prepend("<div class='col'><div class='card'><div class='card-body'><span class='dataTitle' data-id=" +
-        data[i]._id + ">" + "<h2 class='card-title'>" + data[i].title + "</h2>" +"<br>" +"<a class='URL' href=" + data[i].link + "> Fuente: " + data[i].link + "</a></p>" + "<div id='save-button'><button id='save'>Guardar Artículo</button></div><br><h4>Comentarios</h4><div id='user-input'><textarea id='note'></textarea><div id='buttons'><div id='action-button'><button id='make-new'>Guardar Comentario</button></div><button id='clear-all'>Borrar todas las Notas</button></div></div></div></div></div><br>")
+
+      $("#resultados").prepend("<div class='col'><div class='card'><div class='card-body'><span class='dataTitle' data-id=" +
+        data[i]._id + ">" + "<h2 class='card-title'>" + data[i].title + "</h2>" +"<br>" +"<a class='URL' href=" + data[i].link + "> Fuente: " + data[i].link + "</a></p>" + "<br><h4>Comentarios</h4><div id='user-input'><textarea id='note'></textarea><div id='buttons'><div id='action-button'><button id='make-new'>Guardar</button></div><button id='clear-all'>Borrar todas las Notas</button></div></div></div></div></div><br>")
   };
 })};
 
@@ -36,7 +36,7 @@ $(document).on("click", "#make-new", function() {
   // If that API call succeeds, add the title and a delete button for the note to the page
     .then(function(data) {
     // Add the title and delete button to the #results section
-      $("#results").prepend("<p class='data-entry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
+      $("#resultados").prepend("<p class='data-entry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
       data._id + ">" + data.title + "</span><span class='delete'>X</span></p>");
       // Clear the note and title inputs on the page
       $("#note").val("");
@@ -53,7 +53,7 @@ $("#clear-all").on("click", function() {
     url: "/clearall",
     // On a successful call, clear the #results section
     success: function(response) {
-      $("#results").empty();
+      $("#resultados").empty();
     }
   });
 });

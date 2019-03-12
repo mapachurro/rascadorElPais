@@ -12,7 +12,7 @@ function getResults() {
     for (var i = 0; i < data.length; i++) {
       // ...populate #results with a p-tag that includes the note's title and object id
       $("#results").prepend("<div class='col'><div class='card'><div class='card-body'><span class='dataTitle' data-id=" +
-        data[i]._id + ">" + "<h2 class='card-title'>" + data[i].title + "</h2>" +"<br>" +"<a class='URL' href=" + data[i].link + "> Fuente: " + data[i].link + "</a></p>" + "<div id='save-button'><button id='save'>Guardar Artículo</button></div><br><h4>Comentarios</h4><div id='user-input'><textarea id='note'></textarea><div id='buttons'><div id='action-button'><button id='make-new'>Guardar Comentario</button></div><button id='clear-all'>Borrar todas las Notas</button></div></div></div></div></div><br>")
+        data[i]._id + ">" + "<h2 class='card-title'>" + data[i].title + "</h2>" +"<br>" +"<a class='URL' href=" + data[i].link + "> Fuente: " + data[i].link + "</a></p>" + "<br><h4>Comentarios</h4><div id='user-input'><textarea id='note'></textarea><div id='buttons'><div id='action-button'><button id='make-new'>Guardar</button></div><button id='clear-all'>Borrar todas las Notas</button></div></div></div></div></div><br>")
   };
 })};
 
@@ -82,7 +82,7 @@ $(document).on("click", ".delete", function() {
   });
 });
 
-// When user click's on note title, show the note, and allow for updates
+// When user clicks on note title, show the note, and allow for updates
 $(document).on("click", ".dataTitle", function() {
   // Grab the element
   var selected = $(this);
